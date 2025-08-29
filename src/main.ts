@@ -8,6 +8,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     forbidNonWhitelisted: true,
+    transform: true,
+    transformOptions: {enableImplicitConversion: true}
   }))
   
   //aagrega un prefijo al http
@@ -16,5 +18,6 @@ async function bootstrap() {
   
 
   await app.listen(process.env.PORT ?? 3000);
+  console.log(`App runnging on port ${process.env.PORT}`);
 }
 bootstrap();
